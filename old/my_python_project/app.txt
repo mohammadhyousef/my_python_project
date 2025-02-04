@@ -1,0 +1,55 @@
+from glob import escape
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return '<p>Hello, world!</p>'
+
+@app.route('/about')
+def about():
+    return """
+    <h1>about</h1>
+    <p>my name is Mohammad Yousef</p>
+"""
+@app.route('/contact')
+def contact():
+     return """
+    <h1>contact me</h1>
+    <p>my email: <strong> example@hotmail.com </strong></p>
+"""
+@app.route('/post/<int:id>')
+def post(id):
+    return f'<h1> Post number {id}</h1>'
+
+@app.route('/greet/<name>')
+def greet(name):
+    return f'<h1>Hello, {escape(name)}</h1>'
+
+
+
+@app.route('/rectangle/<float:width>/<float:height>')
+def area(width, height):
+    return f"""
+    <h1>Rectangle area calculator:</h1>
+    <h2> width: {width} </h2>
+    <h2> height: {height}</h2>
+    <h2> area: {width*height} </h2>
+"""
+
+@app.route('/path/<path:subpath>')
+def path(subpath):
+    return f'Tha subpath is: {subpath}'
+
+@app.route('/user/<uuid:id>')
+def user(id):
+    return str(id)
+
+@app.route('/projects/')
+def projects():
+    return 'the project page'
+
+@app.route('/portfolio')
+def portfolio():
+    return 'the portfoilo page'

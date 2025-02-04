@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if posts %}
+<h1> Titels </h1>
+{% else %}
+<h1> Empty </h1>
+{% endif %}
+
+<ul> 
+   {% for post in posts %}
+   <li><a href="/posts/{{post.id}}">{{ post.title }}</a></li>
+   {% endfor %}
+    </ul>
+    {% endblock  %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Title {% endblock  %}
+
+{% block content %}
+<form dir="rtl" action="/posts/create" method="post">
+    <labale> title </label>
+    </br>
+    <input type="text" name="title"> 
+    </br>
+    <labale> body </label>
+    </br>
+    <textarea name="body" cols="50" rows="10"> </textarea>
+    </br>
+    <button type="submit"> submit </button>
+    </form>
+
+    {% endblock  %}
