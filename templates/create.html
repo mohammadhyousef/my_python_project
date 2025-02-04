@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} إنشاء مقالة{% endblock  %}
+
+{% block content %}
+  <from action="{{ '/psts/{}/update'.format(post['id']) if post else '/posts/create' }}" method="post">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">عنوان المقالة</label>
+      <input type="text" name="title" class="form-control" id="exampleFormControlInput1" value="{{post['title'] if post else ''}}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">محتوى المقالة</label>
+      <textarea class="form-control" name="body" rows="10">{{post['body'] if post else ''}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">{{ 'تعديل المقالة' if post else 'إنشاء المقالة'}}</button>
+  </form>
+{% endblock  %}

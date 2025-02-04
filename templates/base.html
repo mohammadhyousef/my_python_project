@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{% block title %}{% endblock %}</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.rtl.min.css')}}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+  </head>
+  <body>
+        
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="/posts">مدونتي</a>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{url_for('blog.create')}}">إنشاء مقالة</a>
+              </li>
+              {% if g.user %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">{{ g.user['username'] }}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/logout">تسجيل الخروج</a>
+              </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link active" ari a-current="page" href="/login">تسجيل الدخول</a>
+                </li>
+                <li class="nav=item">
+                  <a class="nav-link active" aria-current="page" href="/register">تسجيل مستخدم جديد</a>
+                </li>
+              {% endif %} 
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container">
+      {% block content %}{% endblock  %}
+    </div>
+  </body>
+</html>
